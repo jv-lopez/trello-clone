@@ -12,20 +12,20 @@ import { getAvailableCount } from "@/lib/org-limit";
 import { checkSubscription } from "@/lib/subscription";
 
 export const BoardList = async () => {
-  // const { orgId } = auth();
+  const { orgId } = auth();
 
-  // if (!orgId) {
-  //   return redirect("/select-org");
-  // }
+  if (!orgId) {
+    return redirect("/select-org");
+  }
 
-  // const boards = await db.board.findMany({
-  //   where: {
-  //     orgId,
-  //   },
-  //   orderBy: {
-  //     createdAt: "desc"       
-  //   }
-  // });
+  const boards = await db.board.findMany({
+    where: {
+      orgId,
+    },
+    orderBy: {
+      createdAt: "desc"
+    }
+  });
 
   // const availableCount = await getAvailableCount();
   const availableCount = 5;
@@ -39,7 +39,7 @@ export const BoardList = async () => {
         Your boards
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {/* {boards.map((board) => (
+        {boards.map((board) => (
           <Link
             key={board.id}
             href={`/board/${board.id}`}
@@ -51,7 +51,7 @@ export const BoardList = async () => {
               {board.title}
             </p>
           </Link>
-        ))} */}
+        ))}
         <FormPopover sideOffset={10} side="right">
           <div
             role="button"
