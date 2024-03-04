@@ -15,7 +15,7 @@ import { useAction } from "@/hooks/use-action";
 // import { createCard } from "@/actions/create-card";
 import { Button } from "@/components/ui/button";
 import { FormSubmit } from "@/components/form/form-submit";
-// import { FormTextarea } from "@/components/form/form-textarea";
+import { FormTextarea } from "@/components/form/form-textarea";
 
 interface CardFormProps {
   listId: string;
@@ -74,13 +74,13 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(({
         action={onSubmit}
         className="m-1 py-0.5 px-1 space-y-4"
       >
-        {/* <FormTextarea
+        <FormTextarea
           id="title"
           onKeyDown={onTextareakeyDown}
           ref={ref}
           placeholder="Enter a title for this card..."
-          errors={fieldErrors}
-        /> */}
+        // errors={fieldErrors}
+        />
         <input
           hidden
           id="listId"
