@@ -2,7 +2,7 @@
 
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
-// import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 
 import { ListWithCards } from "@/types";
 import { useAction } from "@/hooks/use-action";
@@ -28,18 +28,29 @@ export const ListContainer = ({
   }, [data]);
 
   return (
-    <ol className="flex gap-x-3 h-full">
-      {orderedData && orderedData.map((list, index) => {
-        return (
-          <ListItem
-            key={list.id}
-            index={index}
-            data={list}
-          />
-        )
-      })}
-      <ListForm />
-      <div className='flex-shrink-0 w-1' />
-    </ol>
+    <DragDropContext onDragEnd={() => { }}>
+      <Droppable droppableId="lists" type="list" direction="horizontal">
+        {(provided) => (
+          <ol
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            className="flex gap-x-3 h-full"
+          >
+            {orderedData && orderedData.map((list, index) => {
+              return (
+                <ListItem
+                  key={list.id}
+                  index={index}
+                  data={list}
+                />
+              )
+            })}
+            {provided.placeholder}
+            <ListForm />
+            <div className='flex-shrink-0 w-1' />
+          </ol>
+        )}
+      </Droppable>
+    </DragDropContext>
   )
 }
