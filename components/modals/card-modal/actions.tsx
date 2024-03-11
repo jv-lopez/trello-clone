@@ -22,9 +22,9 @@ export const Actions = ({
   const params = useParams();
   const cardModal = useCardModal();
 
-  const { 
+  const {
     execute: executeCopyCard,
-    isLoading: isLoadingCopy,
+    isLoading: isCopying,
   } = useAction(copyCard, {
     onSuccess: (data) => {
       toast.success(`Card "${data.title}" copied`);
@@ -35,9 +35,9 @@ export const Actions = ({
     },
   });
 
-  const { 
+  const {
     execute: executeDeleteCard,
-    isLoading: isLoadingDelete,
+    isLoading: isDeleting,
   } = useAction(deleteCard, {
     onSuccess: (data) => {
       toast.success(`Card "${data.title}" deleted`);
@@ -65,7 +65,7 @@ export const Actions = ({
       boardId,
     });
   };
-  
+
   return (
     <div className="space-y-2 mt-2">
       <p className="text-xs font-semibold">
@@ -73,7 +73,7 @@ export const Actions = ({
       </p>
       <Button
         onClick={onCopy}
-        disabled={isLoadingCopy}
+        disabled={isCopying}
         variant="gray"
         className="w-full justify-start"
         size="inline"
@@ -83,7 +83,7 @@ export const Actions = ({
       </Button>
       <Button
         onClick={onDelete}
-        disabled={isLoadingDelete}
+        disabled={isDeleting}
         variant="gray"
         className="w-full justify-start"
         size="inline"
