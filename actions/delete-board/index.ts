@@ -9,7 +9,7 @@ import { createSafeAction } from '@/lib/create-safe-action';
 
 import { DeleteBoard } from './schema';
 import { InputType, ReturnType } from './types';
-// import { createAuditLog } from "@/lib/create-audit-log";
+import { createAuditLog } from '@/lib/create-audit-log';
 import { ACTION, ENTITY_TYPE } from '@prisma/client';
 import { decreaseAvailableCount } from '@/lib/org-limit';
 import { checkSubscription } from '@/lib/subscription';
