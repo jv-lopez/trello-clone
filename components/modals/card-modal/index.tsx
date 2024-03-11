@@ -11,7 +11,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Header } from "./header";
 import { Description } from "./description";
 import { Actions } from "./actions";
-// import { Activity } from "./activity";
+import { Activity } from "./activity";
 type Props = {}
 
 export const CardModal = (props: Props) => {
@@ -48,10 +48,10 @@ export const CardModal = (props: Props) => {
                 ? <Description.Skeleton />
                 : <Description data={cardData} />
               }
-              {/* {!auditLogsData
+              {!auditLogsData
                 ? <Activity.Skeleton />
                 : <Activity items={auditLogsData} />
-              } */}
+              }
             </div>
           </div>
           {!cardData
