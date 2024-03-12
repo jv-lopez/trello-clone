@@ -17,17 +17,17 @@ import { copyList } from "@/actions/copy-list";
 import { deleteList } from "@/actions/delete-list";
 import { FormSubmit } from "@/components/form/form-submit";
 import { Separator } from "@/components/ui/separator";
-type ListOptionsProps = {
+
+interface ListOptionsProps {
   data: List;
   onAddCard: () => void;
-}
+};
 
 export const ListOptions = ({
   data,
   onAddCard,
 }: ListOptionsProps) => {
   const closeRef = useRef<ElementRef<"button">>(null);
-
 
   const { execute: executeDelete } = useAction(deleteList, {
     onSuccess: (data) => {
@@ -65,7 +65,7 @@ export const ListOptions = ({
 
   return (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button className="h-auto w-auto p-2" variant="ghost">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
@@ -97,7 +97,9 @@ export const ListOptions = ({
           </FormSubmit>
         </form>
         <Separator />
-        <form action={onDelete} >
+        <form
+          action={onDelete}
+        >
           <input hidden name="id" id="id" value={data.id} />
           <input hidden name="boardId" id="boardId" value={data.boardId} />
           <FormSubmit
@@ -109,5 +111,5 @@ export const ListOptions = ({
         </form>
       </PopoverContent>
     </Popover>
-  )
-}
+  );
+};

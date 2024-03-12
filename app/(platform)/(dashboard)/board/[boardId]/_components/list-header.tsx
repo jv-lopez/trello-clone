@@ -58,11 +58,11 @@ export const ListHeader = ({
       return disableEditing();
     }
 
-    // execute({
-    //   title,
-    //   id,
-    //   boardId,
-    // });
+    execute({
+      title,
+      id,
+      boardId,
+    });
   }
 
   const onBlur = () => {
