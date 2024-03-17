@@ -76,14 +76,13 @@ export const getAvailableCount = async () => {
     return 0;
   }
 
-  return 0;
-  // const orgLimit = await db.orgLimit.findUnique({
-  //   where: { orgId },
-  // });
+  const orgLimit = await db.orgLimit.findUnique({
+    where: { orgId },
+  });
 
-  // if (!orgLimit) {
-  //   return 0;
-  // }
+  if (!orgLimit) {
+    return 0;
+  }
 
-  // return orgLimit.count;
+  return orgLimit.count;
 };

@@ -39,6 +39,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     if (!isPro) {
       await decreaseAvailableCount();
     }
+
+    await createAuditLog({
+      entityTitle: board.title,
+      entityId: board.id,
+      entityType: ENTITY_TYPE.BOARD,
+      action: ACTION.DELETE,
+    });
   } catch (error) {
     return {
       error: 'Failed to delete.',

@@ -1,7 +1,7 @@
 "use client"
 
 import { CardModal } from "@/components/modals/card-modal"
-import { useState } from "react";
+import { ProModal } from "@/components/modals/pro-modal";
 import { useIsMounted } from "usehooks-ts";
 
 
@@ -18,6 +18,7 @@ export const ModalProvider = (props: Props) => {
   return (
     <>
       <CardModal />
+      <ProModal />
     </>
   )
 }
